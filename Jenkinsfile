@@ -18,17 +18,6 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                }
-            }
-            steps {
-                nodeBuild()
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 dockerBuild(env.IMAGE_NAME)
